@@ -8,6 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -25,4 +26,34 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    app = [
+            'applicationId': 'com.mjiayou.trecore', // 包名
+            'versionCode'  : 20,                    // 版本码
+            'versionName'  : '3.0.0',               // 版本号
+    ]
+
+    trecore = [
+            'versionCode': 25,                      // 版本码
+            'versionName': '3.1.1',                 // 版本号
+    ]
+
+    android = [
+            'minSdkVersion'    : 15,        // 最小支持版本
+            'targetSdkVersion' : 29,        // 目标版本
+            'compileSdkVersion': 29,        // 编译版本
+            'buildToolsVersion': '26.0.2',  // 构建版本
+            'supportVersion'   : '26.1.0',  // Support库版本号
+            'constraintVersion': '1.0.2',   // constraint库版本号
+    ]
+
+    library = [
+            'supportV4'       : 'com.android.support:support-v4:' + android.supportVersion,
+            'appcompatV7'     : 'com.android.support:appcompat-v7:' + android.supportVersion,
+            'recyclerviewV7'  : 'com.android.support:recyclerview-v7:' + android.supportVersion,
+            'constraintLayout': 'com.android.support.constraint:constraint-layout:' + android.constraintVersion,
+    ]
+    libraryValues = library.values()
 }
